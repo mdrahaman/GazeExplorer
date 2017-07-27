@@ -1,0 +1,304 @@
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/Project
+$ http://svn.hcilab.org/git/gaze_exploration.git test.git
+bash: http://svn.hcilab.org/git/gaze_exploration.git: No such file or directory
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/Project
+$ git clone http://svn.hcilab.org/git/gaze_exploration.git test.git
+Cloning into 'test.git'...
+warning: redirecting to https://svn.hcilab.org/git/gaze_exploration.git/
+remote: Counting objects: 3, done.
+remote: Total 3 (delta 0), reused 0 (delta 0)
+Unpacking objects: 100% (3/3), done.
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/Project
+$ git status
+fatal: Not a git repository (or any of the parent directories): .git
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/Project
+$ cd test.git/
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/Project/test.git (mast                                                                                                                                  er)
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+nothing to commit, working tree clean
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/Project/test.git (mast                                                                                                                                  er)
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+
+
+
+/////// file upload. at firs copy the file to repo folder then follow the command below.
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/gaze_exploration/thesis.git (master)
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        readed/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/gaze_exploration/thesis.git (master)
+$ git add .
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/gaze_exploration/thesis.git (master)
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   readed/GAZE-CONTINGENT DISPLAYS.pdf
+        new file:   readed/by schneidermann.pdf
+        new file:   readed/normal important.pdf
+
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/gaze_exploration/thesis.git (master)
+$ git commit -m 'papers'
+[master 91c6ace] papers
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 readed/GAZE-CONTINGENT DISPLAYS.pdf
+ create mode 100644 readed/by schneidermann.pdf
+ create mode 100644 readed/normal important.pdf
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/gaze_exploration/thesis.git (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+nothing to commit, working tree clean
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/gaze_exploration/thesis.git (master)
+$ git push
+warning: redirecting to https://svn.hcilab.org/git/gaze_exploration.git/
+Counting objects: 6, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 10.61 MiB | 2.46 MiB/s, done.
+Total 6 (delta 0), reused 0 (delta 0)
+To http://svn.hcilab.org/git/gaze_exploration.git
+   3e75adb..91c6ace  master -> master
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/gaze_exploration/thesis.git (master)
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+nothing to commit, working tree clean
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/gaze_exploration/thesis.git (master)
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        GazeExploration/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/gaze_exploration/thesis.git (master)
+$ git add .
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/gaze_exploration/thesis.git (master)
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   GazeExploration
+
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/gaze_exploration/thesis.git (master)
+$ git commit -m 'project upload'
+[master 3967764] project upload
+ 1 file changed, 1 insertion(+)
+ create mode 160000 GazeExploration
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/gaze_exploration/thesis.git (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+nothing to commit, working tree clean
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/gaze_exploration/thesis.git (master)
+$ git push
+warning: redirecting to https://svn.hcilab.org/git/gaze_exploration.git/
+Counting objects: 2, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 334 bytes | 0 bytes/s, done.
+Total 2 (delta 0), reused 0 (delta 0)
+To http://svn.hcilab.org/git/gaze_exploration.git
+   91c6ace..3967764  master -> master
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        src/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/Project/test.git (mast                                                                                                                                  er)
+$ touch README
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/Project/test.git (master)
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        README
+        src/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/Project/test.git (master)
+$ git add README
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/Project/test.git (master)
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   README
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        src/
+
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/Project/test.git (master)
+$ git commit -m "added README file"
+[master 709f840] added README file
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 README
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/Project/test.git (master)
+$ git push origin master
+warning: redirecting to https://svn.hcilab.org/git/gaze_exploration.git/
+Counting objects: 2, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 248 bytes | 0 bytes/s, done.
+Total 2 (delta 0), reused 0 (delta 0)
+To http://svn.hcilab.org/git/gaze_exploration.git
+   40a6896..709f840  master -> master
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/Project/test.git (master)
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   README
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/Project/test.git (master)
+$ git diff README
+diff --git a/README b/README
+index e69de29..00a9724 100644
+--- a/README
++++ b/README
+@@ -0,0 +1 @@
++CONFIGURATION & INSTALATION
+\ No newline at end of file
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/Project/test.git (master)
+$ git add README
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/Project/test.git (master)
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        modified:   README
+
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/Project/test.git (master)
+$ git commit -m "update README file"
+[master 482a7d8] update README file
+ 1 file changed, 1 insertion(+)
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/Project/test.git (master)
+$ git push
+warning: redirecting to https://svn.hcilab.org/git/gaze_exploration.git/
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 300 bytes | 0 bytes/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To http://svn.hcilab.org/git/gaze_exploration.git
+   709f840..482a7d8  master -> master
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/Project/test.git (master)
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+open git bash on folder and follow the instruction below
+
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/Project/GazeExploration (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   examples/de/fhpotsdam/unfolding/examples/multi/SimpleGUI.java
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/Project/GazeExploration (master)
+$ git add .
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/Project/GazeExploration (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        modified:   examples/de/fhpotsdam/unfolding/examples/multi/SimpleGUI.java
+
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/Project/GazeExploration (master)
+$ git commit -m 'modifi 10-07-2017'
+[master 57969a6] modifi 10-07-2017
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/Project/GazeExploration (master)
+$ git push thesis
+Counting objects: 9, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (9/9), 668 bytes | 0 bytes/s, done.
+Total 9 (delta 3), reused 0 (delta 0)
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To https://github.com/mdrahaman/Thesis.git
+   dd0abfa..57969a6  master -> master
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/Project/GazeExploration (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/Project/GazeExploration (master)
+
