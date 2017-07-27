@@ -25,6 +25,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import processing.core.PSurface;
+
 public class AppGUI extends JFrame implements ActionListener {
 
 	private ImageIcon icon;
@@ -127,6 +129,12 @@ public class AppGUI extends JFrame implements ActionListener {
 
 		mapTextArea = new JTextArea();
 		mapTextArea.setBounds(0, 40, 1480, 965);
+		
+//		JPanel jp = new JPanel();
+//		
+//PSurface ps =		applet.getSurface();
+//		jp.add(applet.getSurface().get);
+		
 		container.add(mapTextArea);
 		mapTextArea.setFont(font);
 
@@ -383,6 +391,7 @@ public class AppGUI extends JFrame implements ActionListener {
 	public static void main(String[] args) {
 
 		AppGUI frame = new AppGUI();
+	
 		frame.setVisible(true);
 
 		/* without constructor we can do like below */
@@ -485,13 +494,13 @@ public class AppGUI extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Function connectToDb = new Function();
+		DBConnection connectToDb = new DBConnection();
 		ResultSet resultSet = null;
-		String news = "top_news";
-		String introduction = "introduction_geography";
-		String economy = "economy_energy";
-		String communication = "communication_transportation";
-		String government = "government_people";
+//		String news = "top_news";
+//		String introduction = "introduction_geography";
+//		String economy = "economy_energy";
+//		String communication = "communication_transportation";
+//		String government = "government_people";
 
 		resultSet = connectToDb.find(searchTextField.getText());
 
@@ -512,7 +521,7 @@ public class AppGUI extends JFrame implements ActionListener {
 
 	}
 
-	class Function {
+	class DBConnection {
 		Connection con = null;
 		ResultSet rs = null;
 		PreparedStatement ps = null;
