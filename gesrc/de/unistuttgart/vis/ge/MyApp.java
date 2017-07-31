@@ -1,8 +1,12 @@
 package de.unistuttgart.vis.ge;
 
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -10,11 +14,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import org.omg.CORBA.PUBLIC_MEMBER;
+
+import com.mysql.jdbc.Blob;
 
 import de.fhpotsdam.unfolding.UnfoldingMap;
 import de.fhpotsdam.unfolding.data.Feature;
@@ -26,6 +33,7 @@ import de.fhpotsdam.unfolding.utils.ScreenPosition;
 import de.unistuttgart.vis.ge.AppGUI.DBConnection;
 import g4p_controls.GButton;
 import g4p_controls.GEvent;
+import g4p_controls.GImageButton;
 import g4p_controls.GLabel;
 import g4p_controls.GTextArea;
 import g4p_controls.GTextField;
@@ -52,6 +60,7 @@ public class MyApp extends PApplet implements ActionListener {
 	GTextField searchTextField;
 	GButton searchButton;
 	GButton flagButton;
+	GImageButton flagDisplay;
 
 	private List<Feature> countries = null;
 
@@ -91,10 +100,15 @@ public class MyApp extends PApplet implements ActionListener {
 		economyTextArea = new GTextArea(this, 1480, 655, 430, 175, 5);
 
 		// Flag
-		flagLabel = new GLabel(this, 1660, 830, 300, 30);
-		flagLabel.setText("Country Flag");
-		flagLabel.setTextBold();
-//		countryFlagTextArea = new GTextArea(this, 1480, 860, 430, 60);
+		flagDisplay = new GImageButton(this, 1480, 860, 430, 60, loadImageFormats);
+		flagDisplay.setVisible(true);
+		
+		
+		
+//		flagLabel = new GLabel(this, 1660, 830, 300, 30);
+//		flagLabel.setText("Country Flag");
+//		flagLabel.setTextBold();
+		// countryFlagTextArea = new GTextArea(this, 1480, 860, 430, 60);
 		flagDisplayLabel = new GLabel(this, 1480, 860, 430, 60);
 
 		searchButton = new GButton(this, 1480, 920, 430, 30);
@@ -141,25 +155,41 @@ public class MyApp extends PApplet implements ActionListener {
 		MapUtils.createDefaultEventDispatcher(this, mainMap, subMap);
 	}
 
-	// mouse clicked events for display data from DB
+	// display all informationn of a country by button click 
 
 	public void button_clicked(GButton button, GEvent event) {
 		DBConnection connectToDb = new DBConnection();
 		ResultSet resultSet = null;
-		
-		resultSet = connectToDb.find(searchTextField.getText());  // need to do something for get data if clicked on map to country
+
+		resultSet = connectToDb.find(searchTextField.getText()); 
 
 		try {
 
 			if (button == searchButton && event == GEvent.CLICKED) {
-				
+
 				resultSet.next();
 				topNewsTextArea.setText(resultSet.getString("top_news"));
 				introductionTextArea.setText(resultSet.getString("introduction"));
 				governmentTextArea.setText(resultSet.getString("government"));
 				economyTextArea.setText(resultSet.getString("economy"));
-//				flagDisplayLabel.se(resultSet.getBlob("country_flag"));
-//				flagDisplayLabel.get
+				
+//				byte [] img = resultSet.getBytes("country_flag");
+//				ImageIcon image = new ImageIcon(img);
+//				Image im = image.getImage();
+//				Image myImage = im.getScaledInstance(430,60,Image.SCALE_SMOOTH);
+//				ImageIcon newImage = new ImageIcon(myImage);
+//				flagDisplayLabel.setIconPos(newImage);				
+
+//                
+//                
+//
+//                
+//                Image img = Toolkit.getDefaultToolkit().createImage(b);
+//                ImageIcon icon = new ImageIcon(img);
+                
+//                flagDisplayLabel.setIcon(1480, 860, 430, 60);
+//				flagDisplayLabel.getIcon()(resultSet.getByte("country_flag"));
+				
 //				countryFlagTextArea.setText(resultSet.getBlob("country_flag"));
 
 			}
@@ -169,6 +199,30 @@ public class MyApp extends PApplet implements ActionListener {
 
 	}
 
+	// get all information of a country when click on a country on subMap;
+	
+	public void get_country_info(String country_name) {
+		DBConnection connectToDb = new DBConnection();
+		ResultSet resultSet = null;
+
+		resultSet = connectToDb.find(country_name); 
+
+		try {
+
+				resultSet.next();
+				topNewsTextArea.setText(resultSet.getString("top_news"));
+				introductionTextArea.setText(resultSet.getString("introduction"));
+				governmentTextArea.setText(resultSet.getString("government"));
+				economyTextArea.setText(resultSet.getString("economy"));				
+//				flagDisplay.setImage(resultSet.getBlob("country_flag"));
+				
+//				countryFlagTextArea.setText(resultSet.getBlob("country_flag"));
+
+		} catch (Exception ex) {
+			JOptionPane.showMessageDialog(null, ex.getMessage());
+		}
+	}
+	
 	class DBConnection {
 		Connection con = null;
 		ResultSet rs = null;
@@ -180,6 +234,8 @@ public class MyApp extends PApplet implements ActionListener {
 				ps = con.prepareStatement("select * from worldinfo.project_db where country_name = ?");
 				ps.setString(1, s);
 				rs = ps.executeQuery();
+				
+				
 			} catch (Exception ex) {
 				JOptionPane.showMessageDialog(null, ex.getMessage());
 			}
@@ -196,11 +252,11 @@ public class MyApp extends PApplet implements ActionListener {
 				message += ", ID:" + marker.getId();
 				message += ", Name:" + marker.getProperty("name");
 
-				// update rightMap
+				// update subMap
 				countries = GeoJSONReader.loadData(this, getContinent(marker.getId()));
 				List<Marker> countryMarkers = MapUtils.createSimpleMarkers(countries);
 
-				// rightMap marker selection process//
+				// subMap marker selection process//
 				for (Marker rightMapMarker : countryMarkers) {
 					rightMapMarker.setColor(COLOR_DEFAULT_MARKER);
 					rightMapMarker.setHighlightColor(COLOR_SELECTED_MARKER);
@@ -244,8 +300,10 @@ public class MyApp extends PApplet implements ActionListener {
 				String message = marker.getLocation().toString();
 				message += ", ID:" + marker.getId();
 				message += ", Name:" + marker.getProperty("name");
-
+				// print countr information on console
 				System.out.println(message);
+				// print countr information on text area
+				get_country_info(marker.getProperty("name").toString());
 			}
 
 		}
@@ -318,11 +376,12 @@ public class MyApp extends PApplet implements ActionListener {
 		governmentTextArea.draw();
 		economyLabel.draw();
 		economyTextArea.draw();
-		flagLabel.draw();
+//		flagLabel.draw();
 		// flagButton.draw();
-//		countryFlagTextArea.draw();
+		// countryFlagTextArea.draw();
 		searchButton.draw();
 		searchTextField.draw();
+		flagDisplay.draw();
 
 		// Draw lat, long information
 		fill(300, 0, 0, 500); // mouse pointer colour filling
@@ -337,11 +396,7 @@ public class MyApp extends PApplet implements ActionListener {
 
 	}
 
-	public static void main(String[] args) {
-		PApplet.main(new String[] { MyApp.class.getName() });
-	}
-
-	// Popup continent on righMap when click over continent of leftMap //
+	// Popup continent on subMap when click over continent of mainMap //
 	// Location location1 = new Location(15.456, 20.987);
 
 	public String getContinent(String continentId) {
@@ -362,10 +417,22 @@ public class MyApp extends PApplet implements ActionListener {
 		}
 		return null;
 	}
+       //to displaay all information into Text Area when click over a country on subMap;
+
+	
+
+	private String button_clicked(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+	
+	}
 
+	public static void main(String[] args) {
+		PApplet.main(new String[] { MyApp.class.getName() });
 	}
 }

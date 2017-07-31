@@ -285,7 +285,7 @@ $ git commit -m 'modifi 10-07-2017'
  1 file changed, 5 insertions(+), 3 deletions(-)
 
 ThinkPad@DESKTOP-NC9HRG7 MINGW64 /d/Saied/Infotech/Thesis/Project/GazeExploration (master)
-$ git push thesis
+$ git push thesis (or git push origin master)
 Counting objects: 9, done.
 Delta compression using up to 4 threads.
 Compressing objects: 100% (6/6), done.
