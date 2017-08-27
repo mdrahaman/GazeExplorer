@@ -1,4 +1,4 @@
-package de.unistuttgart.vis.ge;
+package de.unistuttgart.vis;
 
 import java.awt.Color;
 import java.awt.Container;
@@ -24,8 +24,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-
-import processing.core.PSurface;
+import javax.swing.ScrollPaneConstants;
 
 public class AppGUI extends JFrame implements ActionListener {
 
@@ -115,8 +114,8 @@ public class AppGUI extends JFrame implements ActionListener {
 		newsTextArea.setWrapStyleWord(true);
 		newsTextArea.setEditable(false);
 
-		scrolltextArea = new JScrollPane(newsTextArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scrolltextArea = new JScrollPane(newsTextArea, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
+				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scrolltextArea.setBounds(1480, 30, 430, 170);
 		container.add(scrolltextArea);
 
@@ -181,8 +180,8 @@ public class AppGUI extends JFrame implements ActionListener {
 		introTextArea.setWrapStyleWord(true);
 		introTextArea.setEditable(false);
 
-		scrolltextArea = new JScrollPane(introTextArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scrolltextArea = new JScrollPane(introTextArea, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
+				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scrolltextArea.setBounds(1480, 230, 430, 170);
 		container.add(scrolltextArea);
 
@@ -207,8 +206,8 @@ public class AppGUI extends JFrame implements ActionListener {
 		economyTextArea.setWrapStyleWord(true);
 		economyTextArea.setEditable(false);
 
-		scrolltextArea = new JScrollPane(economyTextArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scrolltextArea = new JScrollPane(economyTextArea, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
+				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scrolltextArea.setBounds(1480, 620, 430, 170);
 		container.add(scrolltextArea);
 
@@ -230,8 +229,8 @@ public class AppGUI extends JFrame implements ActionListener {
 		communicationTextArea.setWrapStyleWord(true);
 		communicationTextArea.setEditable(false);
 
-		scrolltextArea = new JScrollPane(communicationTextArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scrolltextArea = new JScrollPane(communicationTextArea, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
+				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scrolltextArea.setBounds(1480, 820, 430, 170);
 		container.add(scrolltextArea);
 
@@ -304,8 +303,8 @@ public class AppGUI extends JFrame implements ActionListener {
 		// mousePositionTextArea.setOpaque(true);
 		// mousePositionTextArea.setBackground(Color.GREEN);
 
-		scrolltextArea = new JScrollPane(mousePositionTextArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scrolltextArea = new JScrollPane(mousePositionTextArea, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
+				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scrolltextArea.setBounds(1480, 430, 430, 165);
 		container.add(scrolltextArea);
 
