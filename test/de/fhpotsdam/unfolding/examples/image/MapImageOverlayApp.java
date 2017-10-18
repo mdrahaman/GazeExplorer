@@ -1,7 +1,8 @@
 package de.fhpotsdam.unfolding.examples.image;
 
-import processing.core.PApplet;
+import processing.core.PApplet; 
 import processing.core.PImage;
+import de.fhpotsdam.ImageLoadFromJarTestApp;
 import de.fhpotsdam.unfolding.UnfoldingMap;
 import de.fhpotsdam.unfolding.geo.Location;
 import de.fhpotsdam.unfolding.providers.Microsoft;
@@ -45,4 +46,8 @@ public class MapImageOverlayApp extends PApplet {
 		tint(255, 110);
 		image(visImg, topRight.x, topRight.y, width, height);
 	}
+	
+	
+	
+	
 }

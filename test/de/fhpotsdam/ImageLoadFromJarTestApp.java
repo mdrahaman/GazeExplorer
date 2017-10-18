@@ -1,6 +1,6 @@
 package de.fhpotsdam;
 
-import processing.core.PApplet;
+import processing.core.PApplet; 
 import processing.core.PImage;
 
 public class ImageLoadFromJarTestApp extends PApplet {
@@ -9,14 +9,21 @@ public class ImageLoadFromJarTestApp extends PApplet {
 
 	public void setup() {
 		size(800, 600);
+		img = loadImage("ag-lgflag.gif");
 		
-		img = loadImage("ui/unfolding-mini-icon.png");
+		
 	}
+	
+	
 
 	public void draw() {
-		background(240);
+		background(0);
 		
-		image(img, mouseX, mouseY);
+		image(img, 0, 0);
+	}
+	
+	public static void main(String args[]) {
+		PApplet.main(new String[] { ImageLoadFromJarTestApp.class.getName() });
 	}
 
 }

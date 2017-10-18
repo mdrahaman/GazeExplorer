@@ -1,5 +1,5 @@
 package edu.ucsd.sccn;
 
-public interface EyePositionListener2 {
+public interface EyePositionListener {
 	public void eyePositionUpdated(double x, double y);
 }

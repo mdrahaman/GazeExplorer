@@ -1,22 +1,18 @@
 package edu.ucsd.sccn;
 
-import java.io.IOException;
+import java.io.IOException; 
 import java.util.ArrayList;
 import java.util.List;
 
-import de.unistuttgart.vis.EyePositionListener2;
-import de.unistuttgart.vis.LSL;
 
 
-public class TobiiEyePositionProvider2 {
-	
-
+public class TobiiEyePositionProvider {
 
 	private static final String rexLSLStreamerLocation = "D:\\Saied\\Eclipse\\Workspace\\RexLSLStreamer\\RexLSLStreamer\\build\\Release\\rexLSLStreamer.exe";
 	private static Process process = null;
 	public static boolean debug = false;
 
-	private static List<EyePositionListener2> eyePositionListeners = new ArrayList<>();
+	private static List<EyePositionListener> eyePositionListeners = new ArrayList<>();
 
 	private static boolean start_rexLSLStreamer() {
 		try {
@@ -47,18 +43,16 @@ public class TobiiEyePositionProvider2 {
 					}
 
 					if (debug) {
-						// System.out.println("resLSLStreamer is running...? " +
-						// (process != null && process.isAlive()));
+						//System.out.println("resLSLStreamer is running...? " + (process != null && process.isAlive()));
 					}
 				}
 			}
 		}).start();
 	}
 
-	public static void startListeningToGazeData2(boolean debug) {
+	public static void startListeningToGazeData(boolean debug) {
+		TobiiEyePositionProvider.debug = debug;
 		
-		TobiiEyePositionProvider2.debug = debug;
-
 		start_resLSLStreamer();
 
 		LSL.StreamInfo[] results = LSL.resolve_stream("type", "Gaze");
@@ -68,8 +62,8 @@ public class TobiiEyePositionProvider2 {
 		float[] sample;
 		try {
 			sample = new float[inlet.info().channel_count()];
-			while (true) {
-				inlet.pull_sample(sample);
+//			while (true) {
+//				inlet.pull_sample(sample);
 
 				while (true) {
 					inlet.pull_sample(sample);
@@ -77,11 +71,10 @@ public class TobiiEyePositionProvider2 {
 					// Need to read documentation
 					if (sample.length == 2) {
 						if (debug) {
-							System.out
-									.println("Data: " + Double.toString(sample[0]) + ", " + Double.toString(sample[1]));
+							System.out.println("Data: " + Double.toString(sample[0]) + ", " + Double.toString(sample[1]));
 							System.out.println(eyePositionListeners.size());
 						}
-						for (EyePositionListener2 listener : eyePositionListeners) {
+						for (EyePositionListener listener : eyePositionListeners) {
 							listener.eyePositionUpdated(sample[0], sample[1]);
 							if (debug) {
 								System.out.println(Double.toString(sample[0]) + ", " + Double.toString(sample[1]));
@@ -89,45 +82,20 @@ public class TobiiEyePositionProvider2 {
 						}
 					}
 				}
-			}
+//			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
 	
-	
-	
-//	class MyClass implements EyePositionListener2 {
-//
-//		@Override
-//		public void eyePositionUpdated(double x, double y) {
-//			System.out.println("Hello from MyClass, eyePositionUpdated");
-//			System.out.println(x + ", " + y);
-//
-//		}
-//	}
-//
-//	class MyOtherClass implements EyePositionListener2 {
-//
-//		@Override
-//		public void eyePositionUpdated(double x, double y) {
-//			System.out.println("Hello from MyOtherClass, eyePositionUpdated");
-//			System.out.println(x + ", " + y);
-//
-//		}
-//	}
-	
-	
-	
-	
-	
-	
-	
-	public static void main(String[] args) {
-		startListeningToGazeData2(true);
+	public static void addEyePositionListener(EyePositionListener listener) {
+		if (listener != null) {
+			eyePositionListeners.add(listener);
+		}
 	}
 
-
+	public static void main(String[] args) {
+		startListeningToGazeData(true);
+	}
 
 }
