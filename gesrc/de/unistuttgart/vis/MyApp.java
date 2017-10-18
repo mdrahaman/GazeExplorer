@@ -459,14 +459,14 @@ public class MyApp extends PApplet implements EyePositionListener {
 				// marker.wait(timeout =100);
 				
 				
-				// update country information by eye tracker, first time display instantly but if changing country name it takes 5 second
+				// update country information by eye tracker, first time display instantly but if changing country name it takes 3 second
 				if (!prev_country_name.equals(marker.getProperty("name").toString())
 						&& (((endTime - startTime) / 1000) >= 3) || (endTime == 0 && startTime == 0)) {
-					startTime = System.currentTimeMillis();
+					startTime = System.currentTimeMillis(); // get start time from system
 					get_country_info(marker.getProperty("name").toString()); // get country information
 					prev_country_name = marker.getProperty("name").toString(); // check if already connected to db or not
 				}
-				endTime = System.currentTimeMillis();
+				endTime = System.currentTimeMillis(); 
 
 			}
 		}
